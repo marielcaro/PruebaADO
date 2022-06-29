@@ -16,7 +16,18 @@ namespace Layer.AccessData
             SqlConnection cn = new SqlConnection(cadenaConexion);
             cn.Open();
             SqlCommand cmd = new SqlCommand("sp_PruebaListar", cn);
+            //Si tuviese que agregar parametros del sp pare un get condicional iría esto:
+            //cmd.Parameters.Add(new SqlParameter("@Nombres_Empleado", SqlDbType.VarChar, 100)).Value = entidad.NombresEmpleado;
+
+            //Esto va para un getall:
             cmd.CommandType = CommandType.StoredProcedure;
+
+            //Si necesito hacer un POST O UN UPDATE O UN DELETE VA ESTO:
+            //
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.ExecuteNonQuery();
+            //return "Registro Exitoso";
+
             SqlDataReader drlector = cmd.ExecuteReader();
 
 
